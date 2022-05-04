@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    $(function(){
+        $('.like-btn').click(function(){
+            let no = $(this).attr("data-no");
+            let like = $(this).attr("data-like");
+            $.ajax({
+                type:'post',
+                url:'../music/like',
+                data:{"no" : no},
+                success:function(res) {
+                    like = parseInt(like) + 1;
+                    $('.like-btn').val('좋아요 ' + like);
+                    $('.like-btn').attr('data-like', like);
+                }
+            })
+        });
+    })
+  </script>
+</head>
+<body>
+  <div class="content">
+    <div class="pointer p-b-20" onclick='history.back(); return false;'><i class="fas fa-arrow-left"></i></div>
+    
+    <div id="detail" class="row">
+      <div class="col-lg-3 p-tb-10 flex-m">
+        <img class="detail-poster" th:src="${vo.poster}">
+      </div>
+      <div class="col-lg-9 p-tb-10">
+        <table id="info" class="fs-14">
+          <tr th:if="${vo.title != null}">
+            <td colspan=2><h6 th:text="${vo.title}"></h6></td>
+          </tr>
+          <tr th:if="${vo.album != null}">
+            <td class="text-left">앨범명</td>
+            <td><p th:text="${vo.album}"></p></td>
+          </tr>
+          <tr th:if="${vo.singer != null}">
+            <td class="text-left">가수</td>
+            <td><p th:text="${vo.singer}"></p></td>
+          </tr>
+          <tr th:if="${vo.genre != null}">
+            <td class="text-left">장르</td>
+            <td><p th:text="${vo.genre}"></p></p></td>
+          </tr>
+          <tr th:if="${vo.time != null}">
+            <td class="text-left">재생시간</td>
+            <td><p th:text="${vo.time}"></p></td>
+          </tr>
+          <tr th:if="${vo.writer1 != null}">
+            <td class="text-left">작사가</td>
+            <td><p th:text="${vo.writer1}"></p></td>
+          </tr>
+          <tr th:if="${vo.writer2 != null}">
+            <td class="text-left">작곡가</td>
+            <td><p th:text="${vo.writer2}"></p></td>
+          </tr>
+        </table>
+        <input type=button class="like-btn" th:value="'좋아요 ' + ${vo.likes}" th:data-no="${vo.no}" th:data-like="${vo.likes}">
+      </div>
+      <div class="col-sm-12">
+        <pre class="p-tb-20" th:text="${vo.lyric}"></pre>
+        <div class="video-container">
+          <iframe th:src="'https://www.youtube.com/embed/'+${vo.youtube}"></iframe>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>

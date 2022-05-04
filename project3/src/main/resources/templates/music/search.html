@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    $(function(){
+        $('.youtube').click(function(){
+            let no=$(this).attr("data-no");
+            $('#music').attr("src", 'https://www.youtube.com/embed/' + no);
+            
+        });
+        
+        $('.close').click(function(){
+            $('#music').attr("src", '');
+            
+        });
+    })
+  </script>
+</head>
+<body>
+  <div class="content">
+    <div class="p-t-40" th:if="${list.empty}">
+      <h6>검색 결과 없음</h6>
+    </div>
+    <table th:if="${!list.empty}" id="list">
+      <tbody th:each="vo:${list}">
+        <tr>
+          <td><img class="poster pointer" th:src="${vo.poster}" th:data-no="${vo.no}"></td>
+          <td>
+            <a th:href="@{/music/detail(no=${vo.no})}">
+              <p th:text="${vo.title}"></p>
+              <p class="fs-16" th:text="${vo.singer}"></p>
+            </a>
+          </td>
+          <td>
+            <p class="fs-16" th:text="${vo.album}"></p>
+          </td>
+          <td>
+            <i class="fab fa-youtube youtube pointer" th:data-no="${vo.youtube}" data-toggle="modal" data-target="#youtubemodal"></i>
+          </td>
+          <td>
+            <a th:href="@{/music/detail(no=${vo.no})}"><i class="fas fa-bars"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="youtubemodal" tabindex="-1" role="dialog" aria-labelledby="youtubemodal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <iframe id="music" style="width:450px;height:300px" src=""></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
