@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body bgcolor="black">
   <th:block th:fragment="sideFragment">
     <div id="desktopmenu" class="sidebar">
       <ul>
         <li><h4 class="logo p-b-30"><a th:href="@{/music}">MUSIC</a></h4></li>
         <li class="p-b-20">
-          <form action="/music/search" method="GET">
+          <form th:action="@{/music/search}" method="GET">
             <div id="search-bar" class="dis-flex p-tb-6 p-lr-12">
               <input type="text" class="flex-m" name="search" placeholder="검 색">
               <button type=submit><i class="fas fa-search p-l-10 flex-m pointer"></i></button>
@@ -28,7 +28,7 @@
     </div>
     <div id="mobilemenu">
       <nav class="navbar navbar-expand-lg p-lr-36 bgblack">
-        <a class="navbar-brand p-tb-42" href="#">MUSIC</a>
+        <a class="navbar-brand p-tb-42" th:href="@{/music}">MUSIC</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
           <span class="navbar-toggler-icon cl-white"><i class="fas fa-bars"></i></span>
         </button>

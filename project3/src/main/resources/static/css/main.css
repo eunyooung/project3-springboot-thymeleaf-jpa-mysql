@@ -5,8 +5,10 @@ html, body {
   -moz-user-select:none;
   -ms-user-select:none;
   user-select:none;
+  background-color: black;
 }
 
+/********* 스크롤바 **********/
 body::-webkit-scrollbar { 
   width: 20px;
 }
@@ -25,6 +27,43 @@ body::-webkit-scrollbar-thumb {
 .cl-red {
   color: #FF2727;
 }
+/***************************/
+
+/*********** 반응형 ***********/
+/* 반응형 테이블 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* 모바일 */
+@media screen and (max-width: 720px) {
+  #desktopmenu {
+    display: none;
+  }
+  .content {
+    margin-left: 0;
+    padding: 0px 36px;
+  }
+  
+  /* 모바일에서는 앨범 숨기기 */
+  .album {
+    display: none;
+  }
+}
+
+/* 데스크탑 */
+@media screen and (min-width: 720px) {
+  #mobilemenu {
+    display:none;
+  }
+  .content {
+    margin-left: 240px;
+    padding: 28px 60px;
+  }
+}
+/***************************/
 
 /*********** 메뉴 ***********/
 #search-bar {
@@ -81,27 +120,7 @@ body::-webkit-scrollbar-thumb {
 
 .content {
   background-color: black;
-  min-height: 1100px;
-}
-
-@media screen and (max-width: 700px) {
-  #desktopmenu {
-    display: none;
-  }
-  .content {
-    margin-left: 0;
-    padding: 0px 36px;
-  }
-}
-
-@media screen and (min-width: 700px) {
-  #mobilemenu {
-    display:none;
-  }
-  .content {
-    margin-left: 240px;
-    padding: 28px 60px;
-  }
+  min-height: 1000px;
 }
 /***************************/
 
@@ -113,10 +132,6 @@ body::-webkit-scrollbar-thumb {
 
 .modal-header {
   padding: 3px 10px;
-}
-
-#list table {
-  max-width: 800px;
 }
 
 #list td {
@@ -152,6 +167,10 @@ body::-webkit-scrollbar-thumb {
   color: white;
   font-weight: bold;
 }
+
+.singer {
+  color: #7D7D7D;
+}
 /***************************/
 
 /*********** 상세 ***********/
@@ -161,21 +180,22 @@ body::-webkit-scrollbar-thumb {
   height: auto;
 }
 
-#detail #info td {
+#info td {
   padding: 5px 0px;
 }
 
-#detail #info tr:nth-child(1) td {
+#info tr:nth-child(1) td {
   padding-bottom: 15px; 
 }
 
-#detail pre {
+pre {
   color: #CECECE;
   font-size: 14px;
+  font-family: 'Nanum Barun Gothic';
 }
 
 #detail #info tr td:nth-child(1) {
-  min-width: 70px;
+  width: 75px;
 }
 
 .like-btn {
