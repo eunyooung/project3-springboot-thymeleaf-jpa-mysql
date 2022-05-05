@@ -1,2 +1,2 @@
-# project3-springboot-thymeleaf-jpa-mysql
-Side project using SpringBoot, Thymeleaf, JPA, MySQL
+# Music
+SpringBoot, Thymeleaf, JPA, MySQL을 이용하여 만든 개인프로젝트 입니다.
